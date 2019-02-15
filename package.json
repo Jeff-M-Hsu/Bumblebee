@@ -1,0 +1,12 @@
+{
+	"name": "Bumblebee",
+	"version": "1.0.0",
+	"description": "For bee related puns",
+	"main": "bot.js",
+	"author": "Jeff Hsu",
+	"dependencies": {
+		"discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+		"nodemon": "^1.18.10",
+		"winston": "^3.2.1"
+	}
+}
