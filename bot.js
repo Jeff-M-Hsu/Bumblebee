@@ -1,3 +1,4 @@
+//https://discordapp.com/oauth2/authorize?client_id=545813213057515522&scope=bot&permissions=0
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
