@@ -7,6 +7,6 @@ If you'd like to customize and host it then fork this repo and run:
 
 <code>npm install</code>
 
-<code>nodemon bot.js</code>
+<code>nodemon bot.js</code> or <code>node bot.js</code>
 
 Just make sure you've installed Node.
