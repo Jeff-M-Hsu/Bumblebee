@@ -41,7 +41,6 @@ var bot = new Discord.Client({
 });
 bot.on('ready', function (evt) {
 	bot.setPresence({game: {name:"!joke || !fact || !seduce"}});
-	console.log(pickups[32]);
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
@@ -56,7 +55,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         args = args.splice(1);
 		
         switch(cmd) {
-            // !joke
+			// !joke
 			case 'joke':
 				console.log("joke request");
 				var number = Math.floor((Math.random() * 1000) + 1)% jokes.length;
