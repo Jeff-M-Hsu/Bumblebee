@@ -57,17 +57,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		
         switch(cmd) {
             // !joke
-            case 'joke':
+			case 'joke':
 				console.log("joke request");
 				var number = Math.floor((Math.random() * 1000) + 1)% jokes.length;
 				console.log(number);
 				var output = jokes[number];
 				console.log(output);
-                bot.sendMessage({
-                    to: channelID,
-                    message: "" + output
-                });
-            break;
+				bot.sendMessage({
+					to: channelID,
+					message: "" + output
+				});
+			break;
 			// !fact
 			case 'fact':
 				console.log("fact request");
@@ -75,17 +75,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				console.log(number);
 				var output = facts[number];
 				console.log(output);
-                bot.sendMessage({
-                    to: channelID,
-                    message: "" + output
-                });
-            break;
+				bot.sendMessage({
+					to: channelID,
+					message: "" + output
+				});
+			break;
 			// !poke
 			case 'poke':
 				bot.sendMessage({
-                    to: channelID,
-                    message: "Buzz off.. I'm Buzzy"
-                });
+					to: channelID,
+					message: "Buzz off.. I'm Buzzy"
+				});
 			break;
 			// !seduce
 			case 'seduce':
