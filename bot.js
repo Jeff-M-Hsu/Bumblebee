@@ -40,7 +40,7 @@ var bot = new Discord.Client({
    autorun: true
 });
 bot.on('ready', function (evt) {
-	bot.setPresence({game: {name:"!joke || !fact || !seduce"}});
+	bot.setPresence({game: {name:"!joke || !fact || !seduce || !dance"}});
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
@@ -96,6 +96,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.sendMessage({
 					to: channelID,
 					message: "" + output
+				});
+			break;
+			// !dance
+			case 'dance':
+				console.log("dance request");
+				bot.uploadFile({
+					to: channelID,
+					message: "*sigh..*",
+					file: "./dance.gif"
 				});
 			break;
             // Just add any case commands if you want to..
