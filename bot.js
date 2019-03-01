@@ -113,7 +113,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'search':
 				console.log("search request");
 				var name = args[0];
-				var link = "http://maplestory.io/api/ranking/" + name;
+				var encodedName = encodeURIComponent(name);
+				var link = "http://maplestory.io/api/ranking/" + encodedName;
 				console.log("searching for " + name + " at " + link);
 				request(link, function(err, res, body){
 					var $ = cheerio.load(body);
@@ -127,7 +128,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							},
 							description: "Rank info for " + name,
 							thumbnail: {
-								url: "http://maplestory.io/api/ranking/" + name + "/avatar"
+								url: "http://maplestory.io/api/ranking/" + encodedName + "/avatar"
 							},
 							fields: [
 							{
@@ -157,7 +158,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							},
 							{
 								name: "Rank Change",
-								value: info.rankMovement + " " + info.rankDirection,
+								value: info.rankMovement + " , " + info.rankDirection,
 								inline: true
 							},
 							{
