@@ -3,6 +3,8 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var fs = require('fs'), readline = require('readline');
+var request = require('request');
+var cheerio = require('cheerio');
 
 var jokes = [];
 var facts = [];
@@ -107,6 +109,66 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					file: "./dance.gif"
 				});
 			break;
+			// !search
+			case 'search':
+				console.log("search request");
+				var name = args[0];
+				var link = "http://maplestory.io/api/ranking/" + name;
+				console.log("searching for " + name + " at " + link);
+				request(link, function(err, res, body){
+					var $ = cheerio.load(body);
+					var info = JSON.parse($.text());
+					bot.sendMessage({
+						to: channelID,
+						message: "",
+						embed: {
+							author: {
+								name: "Bumblebee"
+							},
+							description: "Rank info for " + name,
+							thumbnail: {
+								url: "http://maplestory.io/api/ranking/" + name + "/avatar"
+							},
+							fields: [
+							{
+								name: "Job",
+								value: info.job,
+								inline: true
+							},
+							{
+								name: "World",
+								value: info.world,
+								inline: true
+							},
+							{
+								name: "Level",
+								value: info.level,
+								inline: true
+							},
+							{
+								name: "Experience",
+								value: info.exp,
+								inline: true
+							},
+							{
+								name: "Rank",
+								value: info.ranking,
+								inline: true
+							},
+							{
+								name: "Rank Change",
+								value: info.rankMovement + " " + info.rankDirection,
+								inline: true
+							},
+							{
+								name: "Date updated",
+								value: info.got.substring(0,10) + " at " + info.got.substring(11,19) + " UTC"
+							},
+							],
+						}
+					});				
+				});
+				break;
             // Just add any case commands if you want to..
          }
      }
