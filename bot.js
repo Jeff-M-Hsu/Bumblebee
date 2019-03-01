@@ -109,8 +109,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					file: "./dance.gif"
 				});
 			break;
-			// !search
-			case 'search':
+			// !lookup
+			case 'lookup':
 				console.log("search request");
 				var name = args[0];
 				var encodedName = encodeURIComponent(name);
