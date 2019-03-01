@@ -117,59 +117,73 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var link = "http://maplestory.io/api/ranking/" + encodedName;
 				console.log("searching for " + name + " at " + link);
 				request(link, function(err, res, body){
-					var $ = cheerio.load(body);
-					var info = JSON.parse($.text());
-					bot.sendMessage({
-						to: channelID,
-						message: "",
-						embed: {
-							author: {
-								name: "Bumblebee"
-							},
-							description: "Rank info for " + name,
-							thumbnail: {
-								url: "http://maplestory.io/api/ranking/" + encodedName + "/avatar"
-							},
-							fields: [
-							{
-								name: "Job",
-								value: info.job,
-								inline: true
-							},
-							{
-								name: "World",
-								value: info.world,
-								inline: true
-							},
-							{
-								name: "Level",
-								value: info.level,
-								inline: true
-							},
-							{
-								name: "Experience",
-								value: info.exp,
-								inline: true
-							},
-							{
-								name: "Rank",
-								value: info.ranking,
-								inline: true
-							},
-							{
-								name: "Rank Change",
-								value: info.rankMovement + " , " + info.rankDirection,
-								inline: true
-							},
-							{
-								name: "Date updated",
-								value: info.got.substring(0,10) + " at " + info.got.substring(11,19) + " UTC"
-							},
-							],
-						}
-					});				
+					try{
+						var $ = cheerio.load(body);
+						var info = JSON.parse($.text());
+						bot.sendMessage({
+							to: channelID,
+							message: "",
+							embed: {
+								author: {
+									name: "Bumblebee"
+								},
+								description: "Rank info for " + name,
+								thumbnail: {
+									url: "http://maplestory.io/api/ranking/" + encodedName + "/avatar"
+								},
+								fields: [
+									{
+										name: "Job",
+										value: info.job,
+										inline: true
+									},
+									{
+										name: "World",
+										value: info.world,
+										inline: true
+									},
+									{
+										name: "Level",
+										value: info.level,
+										inline: true
+									},
+									{
+										name: "Experience",
+										value: info.exp,
+										inline: true
+									},
+									{
+										name: "Rank",
+										value: info.ranking,
+										inline: true
+									},
+									{
+										name: "Rank Change",
+										value: info.rankMovement + " , " + info.rankDirection,
+										inline: true
+									},
+									{
+										name: "Date updated",
+										value: info.got.substring(0,10) + " at " + info.got.substring(11,19) + " UTC"
+									},
+								],
+							}
+						});	
+					}
+					catch(e){
+						bot.sendMessage({
+							to: channelID,
+							message: "",
+							embed: {
+								author: {
+									name: "Bumblebee",
+								},
+								description: "Could not find info for " + name,
+							}
+						});
+					}
 				});
-				break;
+			break;
             // Just add any case commands if you want to..
          }
      }
