@@ -109,6 +109,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					file: "./dance.gif"
 				});
 			break;
+			// !bee
+			case 'bee':
+				console.log("bee request");
+				bot.uploadFile({
+					to: channelID,
+					file: "./pollen.jpg"
+				});
+			break;
 			// !lookup
 			case 'lookup':
 				console.log("search request");
