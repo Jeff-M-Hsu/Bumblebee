@@ -1,5 +1,5 @@
 # Bumblebee
-A simple discord bot that talks about bees
+A discord bot that talks about bees
 
 To add it to your server, just use this [link](https://discordapp.com/oauth2/authorize?client_id=545813213057515522&scope=bot&permissions=0)
 
