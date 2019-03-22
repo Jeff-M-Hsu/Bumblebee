@@ -51,7 +51,7 @@ var bot = new Discord.Client({
    autorun: true
 });
 bot.on('ready', function (evt) {
-	bot.setPresence({game: {name:"!joke || !fact || !seduce || !dance"}});
+	bot.setPresence({game: {name:"!lookup || !joke || !fact || !seduce || !honey"}});
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
@@ -124,6 +124,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.uploadFile({
 					to: channelID,
 					file: "./pollen.jpg"
+				});
+			break;
+			// !honey
+			case 'honey':
+				console.log("honey request");
+				bot.uploadFile({
+					to: channelID,
+					message: "How to check if your honey is fake: ",
+					file: "./authenticity.png"
 				});
 			break;
 			// !lookup
