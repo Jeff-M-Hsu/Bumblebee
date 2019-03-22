@@ -9,6 +9,8 @@ var cheerio = require('cheerio');
 var jokes = [];
 var facts = [];
 var pickups = [];
+var exp = [];
+
 // Read jokes from jokes.txt
 var readJokes = readline.createInterface({
 	input: fs.createReadStream('jokes.txt'),
@@ -29,6 +31,13 @@ var readPickups = readline.createInterface({
 });
 readPickups.on('line', function(line){
 	pickups.push(line);
+});
+// Read exp table from xpChart.txt
+var readExp = readline.createInterface({
+	input: fs.createReadStream('xpChart.txt'),
+});
+readExp.on('line', function(line){
+	exp.push(line);
 });
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -128,6 +137,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					try{
 						var $ = cheerio.load(body);
 						var info = JSON.parse($.text());
+						//Calculation for % exp of current level
+						var nextLevel = parseFloat(exp[info.level-1].split(" ")[2]);
+						var percent = parseFloat(info.exp)/nextLevel;
+						//If level 275
+						if(nextLevel == 0){
+							percent = "0";
+						}
 						bot.sendMessage({
 							to: channelID,
 							message: "",
@@ -157,7 +173,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									},
 									{
 										name: "Experience",
-										value: info.exp,
+										value: info.exp + " (" + (percent*100).toFixed(2) + "%)",
 										inline: true
 									},
 									{
