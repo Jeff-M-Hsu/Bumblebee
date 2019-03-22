@@ -128,8 +128,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 			// !lookup
 			case 'lookup':
-				console.log("search request");
-				var name = args[0];
+				console.log("search request for " + args[0]);
+				var name = args[0].toUpperCase();
 				var encodedName = encodeURIComponent(name);
 				var link = "http://maplestory.io/api/ranking/" + encodedName;
 				console.log("searching for " + name + " at " + link);
@@ -151,7 +151,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								author: {
 									name: "Bumblebee"
 								},
-								description: "Rank info for " + name,
+								description: "Rank info for " + info.name,
 								thumbnail: {
 									url: "http://maplestory.io/api/ranking/" + encodedName + "/avatar"
 								},
