@@ -136,7 +136,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			break;
 			// !lookup
-			case 'lookup':
+			/*case 'lookup':
 				console.log("search request for " + args[0]);
 				var name = args[0].toUpperCase();
 				var encodedName = encodeURIComponent(name);
@@ -216,7 +216,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				});
-			break;
+			break;*/
             // Just add any case commands if you want to..
          }
      }
