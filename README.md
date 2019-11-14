@@ -15,8 +15,8 @@ If you'd like to customize and host it instead:
 
 * Install [Node.js](https://nodejs.org/en/).
 * Clone this repository.
-* Run <code>npm install</code>
+* Run <code>npm install</code>.
 * Add the bot to your applications page [here](https://discordapp.com/developers/applications/).
 * Store the bot's token found under the Bot tab of the above page in a file named <code>auth.json</code>, in the target directory in this format: `{"token": "your bot token"}`.
-* Run <code>node bot.js</code>
-* Add the bot to your server by replacing YOUR_CLIENT_ID with the Client ID from the above page and open the url: `https://discordapp.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=0`
+* Run <code>node bot.js</code>.
+* Add the bot to your server by replacing YOUR_CLIENT_ID with the Client ID from the above page and open the url: `https://discordapp.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=0`.
